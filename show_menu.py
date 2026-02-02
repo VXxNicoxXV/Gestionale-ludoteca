@@ -1,4 +1,5 @@
 from new_user import user_data
+from new_game import game_data
 
 class Menu:
     def show_menu():
@@ -13,13 +14,15 @@ class Menu:
         print("8) Visualizza partecipanti di un torneo")
         print("9) Visualizza punti fedeltà")
 
-    def check_input(card_number, users):
+    def check_input(card_number, users, games):
         choose = input("Inserisci la tua scelta: ")
         match choose:
             case "1":
                 new_user = user_data(card_number)
                 users.append(new_user)
                 return True
-                
+            case "2":
+                new_game = game_data()
+                games.append(new_game)
             case _:
                 print("mah")

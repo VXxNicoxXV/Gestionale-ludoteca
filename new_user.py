@@ -3,6 +3,8 @@ class User:
         self.name = name
         self.surname = surname
         self.id = card_number
+        self.loyalty_points = 0
+        self.purchases = []
 
     def __repr__(self):
         return f"Cliente {self.name} {self.surname}, id: {self.id}"

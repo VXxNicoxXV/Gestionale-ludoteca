@@ -10,7 +10,7 @@ class Game:
     
     def __repr__(self):
         currency = "€"
-        return f"\nGioco: {self.game_type} di {self.editor[0]}({self.editor[1]}), Prezzo: {self.price}{currency}, \nGiocatori: da un minimo di {self.players[0]} ad un massimo di {self.players[1]}, \nDurata media della partita: {self.average_game_time}, Disponibili: {self.quantity}"
+        return f"\nTipo di gioco: {self.game_type} Nome: {self.title} di {self.editor[0]}({self.editor[1]}), Prezzo: {self.price}{currency}, \nGiocatori: da un minimo di {self.players[0]} ad un massimo di {self.players[1]}, \nDurata media della partita: {self.average_game_time}, Disponibili: {self.quantity}"
 
 
 def game_data():

@@ -2,6 +2,8 @@ from new_user import user_data
 from new_game import game_data
 from tournament import torunament_data
 from functions import Function
+from purchase import purchasing
+
 class Menu:
     def show_menu():
         print("Inserisci la tua scelta: ")
@@ -25,6 +27,8 @@ class Menu:
             case "2":
                 new_game = game_data()
                 games.append(new_game)
+            case "3":
+                purchasing(games)
             case "4":
                 Function.search_game(games)
             case "6":

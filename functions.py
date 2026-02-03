@@ -5,7 +5,9 @@ class Function:
         for game in games:
             if searching.lower() in game.title.lower():
                 searched.append(game)
-        if len(searched) == 0:
+        if len(searched) > 0:
             print("Sono stati trovati i seguenti giochi :", searched)
+            return searched
         else:
             print("Nessun risultato corrispondente alla ricerca!")
+            return False

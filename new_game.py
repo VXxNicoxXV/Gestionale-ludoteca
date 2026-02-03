@@ -90,7 +90,7 @@ def game_data():
             print("Dato non valido!")
             continue
     while True:
-        quantity = input("Inserisci la quantità disponibile")
+        quantity = input("Inserisci la quantità disponibile: ")
         try:
             quantity = int(quantity)
         except ValueError:

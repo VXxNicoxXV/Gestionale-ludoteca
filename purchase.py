@@ -9,7 +9,7 @@ class Purchase:
 
 
 def purchasing(games):
-    counter = 1
+    counter = 0
     print("Quale gioco vuoi acquistare?")
     while True:
         searched = Function.search_game(games)
@@ -19,13 +19,19 @@ def purchasing(games):
             pass
         else:
             for game in searched:
-                print(f"{counter}) {game}")
                 counter += 1
-            while True:
-                choise = input("Inserisci il numero del gioco che vuoi acquistare: ")
-                if choise > len(searched) or choise < len(searched):
-                    print("va bene!")
-                    break
-                else:
-                    print("nono!")
-                    continue
+                print(f"{counter}) {game}")
+            counter = 0
+        
+        while True:
+            choise = int(input("Inserisci il numero del gioco che vuoi acquistare: "))
+            if choise > len(searched) or choise < len(searched):
+                print("Non va bene!")
+                for game in searched:
+                    counter += 1
+                    print(f"{counter}) {game}")
+                counter = 0
+                continue
+            else:
+                print("SIIIIII!", searched(choise - 1))
+                break

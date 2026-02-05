@@ -28,7 +28,7 @@ class Menu:
                 new_game = game_data()
                 games.append(new_game)
             case "3":
-                purchasing(games)
+                purchasing(games, users)
             case "4":
                 Function.search_game(games)
             case "6":

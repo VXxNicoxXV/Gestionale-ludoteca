@@ -5,9 +5,10 @@ def main():
     users = []
     games = []
     tournaments = []
+    movements = []
     while True:
         Menu.show_menu()
-        new_id_check = Menu.check_input(card_number,users, games, tournaments)
+        new_id_check = Menu.check_input(card_number,users, games, tournaments, purchases)
         if new_id_check == True:
             card_number += 1
         print(users)

@@ -31,6 +31,8 @@ class Menu:
                 purchasing(games, users, movements)
             case "4":
                 Function.search_game(games)
+            case "5":
+                Function.available_games(games)
             case "6":
                 new_tournament = torunament_data()
                 tournaments.append(new_tournament)

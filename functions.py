@@ -11,3 +11,9 @@ class Function:
         else:
             print("Nessun risultato corrispondente alla ricerca!")
             return False
+    def available_games(games):
+        for game in games:
+            if game.quantity == 0:
+                continue
+            print(f"- {game} Disponibili: {game.quantity}")
+            print()

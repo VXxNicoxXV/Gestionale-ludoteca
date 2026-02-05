@@ -8,12 +8,13 @@ def main():
     movements = []
     while True:
         Menu.show_menu()
-        new_id_check = Menu.check_input(card_number,users, games, tournaments, purchases)
+        new_id_check = Menu.check_input(card_number,users, games, tournaments, movements)
         if new_id_check == True:
             card_number += 1
         print(users)
         print(games)
         print(tournaments)
+        print(movements)
 
 
 

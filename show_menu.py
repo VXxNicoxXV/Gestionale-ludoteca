@@ -17,7 +17,7 @@ class Menu:
         print("8) Visualizza partecipanti di un torneo")
         print("9) Visualizza punti fedeltà")
 
-    def check_input(card_number, users, games, tournaments):
+    def check_input(card_number, users, games, tournaments, movements):
         choose = input("Inserisci la tua scelta: ")
         match choose:
             case "1":
@@ -28,7 +28,7 @@ class Menu:
                 new_game = game_data()
                 games.append(new_game)
             case "3":
-                purchasing(games, users)
+                purchasing(games, users, movements)
             case "4":
                 Function.search_game(games)
             case "6":

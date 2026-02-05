@@ -3,7 +3,7 @@ from functions import Function
 
 class Purchase:
     def __init__(self, customer, chosen_product):
-        current_time = datetime.now()
+        current_time = datetime.datetime.now()
         self.date = current_time.date()
         self.hour = current_time.time()
         self.customer = customer
@@ -13,7 +13,7 @@ class Purchase:
         return f"Cliente: {self.customer}\nAcquisto: {self.purchase}\nData: {self.date} alle ore {self.hour}"
 
 
-def purchasing(games, users):
+def purchasing(games, users, movements):
     while True:
         user_id = input("Inserisci il numero di tessera del cliente: ")
         try:
@@ -38,20 +38,27 @@ def purchasing(games, users):
     print("Quale gioco vuoi acquistare?")
     while True:
         searched = Function.search_game(games)
-        for game in searched:
-            if game.quantity == 0:
-                
+        not_available = []
         if searched == False:
             continue
-        else:
-            print("Giochi trovati: ")
-            print()
-            for i, game in enumerate(searched, start = 1):
-                print(f"{i}) {game}")
+        elif len(searched) >= 1:
+            for game in searched[:]:
+                if game.quantity == 0:
+                    not_available.append(game)
+                    searched.remove(game)
+        print("Giochi non disponibili: ")
+        print()
+        for i, game in enumerate(not_available, start = 1):
+            print(f"{i}) {game}")
+        print()
+        print("Giochi Disponibili: ")
+        print()
+        for i, game in enumerate(searched, start = 1):
+            print(f"{i}) {game}")
         break
         
     while True:
-        choice = input("Inserisci il numero del gioco che vuoi acquistare: ")
+        choice = input("Inserisci il numero del gioco che vuoi acquistare (tra i giochi disponibili): ")
         try:
             choice = int(choice)
         except ValueError:
@@ -74,9 +81,14 @@ def purchasing(games, users):
             match confirmation.lower():
                 case "si":
                     purchased = Purchase(customer, chosen_product)
+                    movements.append(purchased)
+                    customer.purchases.append(purchased)
+                    chosen_product.quantity -= 1
+                    print("Acquisto effettuato con successo!")
                     break
                 case "no":
-                    return "Acquisto annullato!"
+                    print("Acquisto annullato!")
+                    return
                 case "_":
                     print("Input non valido!")
                     continue

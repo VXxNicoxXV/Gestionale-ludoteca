@@ -1,3 +1,4 @@
+import math
 import datetime
 from functions import Function
 
@@ -11,6 +12,14 @@ class Purchase:
 
     def __repr__(self):
         return f"Cliente: {self.customer}\nAcquisto: {self.purchase}\nData: {self.date} alle ore {self.hour}"
+
+def loyalty_points_add(customer, chosen_product):
+    if chosen_product.price >= 10:
+        points = float(chosen_product.price / 10)
+        customer.loyalty_points += math.floor(points)
+        return math.floor(points)
+    else:
+        return False
 
 
 def purchasing(games, users, movements):
@@ -84,6 +93,9 @@ def purchasing(games, users, movements):
                     movements.append(purchased)
                     customer.purchases.append(purchased)
                     chosen_product.quantity -= 1
+                    points_check = loyalty_points_add(customer, chosen_product)
+                    if points_check >= 1:
+                        print(f"Sono stati aggiunti {points_check} al tuo account!")
                     print("Acquisto effettuato con successo!")
                     break
                 case "no":

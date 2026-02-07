@@ -1,6 +1,7 @@
 from new_user import user_data
 from new_game import game_data
 from tournament import torunament_data
+from tournament import add_players
 from functions import Function
 from purchase import purchasing
 
@@ -9,7 +10,7 @@ class Menu:
         print("Inserisci la tua scelta: ")
         print("1) Registra cliente")
         print("2) Aggiungi un gioco al catalogo")
-        print("3) Vendi un gico")
+        print("3) Vendi un gioco")
         print("4) Cerca un gioco")
         print("5) Visualizza giochi disponibili")
         print("6) Crea torneo")
@@ -34,7 +35,9 @@ class Menu:
             case "5":
                 Function.available_games(games)
             case "6":
-                new_tournament = torunament_data()
+                new_tournament = torunament_data(games)
                 tournaments.append(new_tournament)
+            case "7":
+                add_players(users, tournaments)
             case _:
                 print("mah")
